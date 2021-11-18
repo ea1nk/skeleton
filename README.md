@@ -18,7 +18,10 @@
 You need to provide your own certificates and place them in a cert folder at the root of the project.
 ```
   git clone https://github.com/ea1nk/skeleton.git
-  npm install 
+  cd skeleton
+  npm install
+  mkdir certs
+  
    
 ```
 # Plantilla básica de servidor web HTTPS, servidor de API y Websocket con NodeJS y Express
@@ -27,6 +30,8 @@ Debes utilizar tus propios certificados y colocarlos en una carpeta cert en la r
 
 ```
   git clone https://github.com/ea1nk/skeleton.git
-  npm install 
+  cd skeleton
+  npm install
+  mkdir certs 
    
 ```
