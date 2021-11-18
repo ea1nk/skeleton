@@ -1,4 +1,5 @@
-/*
+console.log(
+    `
 
 ███████╗ ██████╗ ██████╗     ██████╗ ███████╗██╗   ██╗██╗ ██████╗███████╗███████╗
 ██╔════╝██╔════╝██╔═══██╗    ██╔══██╗██╔════╝██║   ██║██║██╔════╝██╔════╝██╔════╝
@@ -14,7 +15,8 @@
 ███████╗██║  ██║ ██║██║ ╚████║██║  ██╗           
 2021 Skeleton - Node JS + Express Server Boilerplate
 
-*/
+`
+)
 
 require('dotenv').config()
 
@@ -38,50 +40,50 @@ app.use(morgan('dev'));
 
 /* Force any http connection to redirect to https. Comment this block to disable*/
 
-const httpServer = http.createServer((req,res)=>{
+const httpServer = http.createServer((req, res) => {
     var hostName = req.headers['host'].split(":")[0]
-    res.writeHead(301, {"Location":"https://"+ hostName + ":" + https_port + req.url});
+    res.writeHead(301, { "Location": "https://" + hostName + ":" + https_port + req.url });
     res.end();
 }).listen(http_port)
 
 /* HTTPS Server*/
 
 const httpsServer = https.createServer({
-    key:fs.readFileSync(__dirname+'/certs/' + keyFile),
-    cert:fs.readFileSync(__dirname+'/certs/' + certFile)
-}, app).listen(https_port, ()=>{
+    key: fs.readFileSync(__dirname + '/certs/' + keyFile),
+    cert: fs.readFileSync(__dirname + '/certs/' + certFile)
+}, app).listen(https_port, () => {
     console.log(`HTTPS Server running on ${https_port}`)
 })
 
 /* Websocket Server */
-const wss_server = new websocketServer({server:httpsServer})
+const wss_server = new websocketServer({ server: httpsServer })
 
-wss_server.on('connection', (ws)=>{
+wss_server.on('connection', (ws) => {
     ws.send('Hello Client');
 
     console.log('Client connected')
-    
+
     //On incoming message
-    ws.on('message', (message)=>{
+    ws.on('message', (message) => {
         console.log(`Websocket: ${message}`)
     })
 
     //On client disconnect
-   ws.on('close',()=>{
+    ws.on('close', () => {
         console.log('Client disconnected')
-   })
+    })
 
-   //On error
-   ws.on('error', (error)=>{
+    //On error
+    ws.on('error', (error) => {
         console.log(error)
-   })
-    
+    })
+
 })
 
 /*Routes*/
 
-app.get('/api', (req, res) =>{
-    res.json({message:'Hello World'})
+app.get('/api', (req, res) => {
+    res.json({ message: 'Hello World' })
 })
 
 /* Static content */
