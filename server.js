@@ -28,7 +28,7 @@ const http = require('http')
 const http_port = process.env.HTTP_PORT || 80
 const https = require('https')
 const https_port = process.env.HTTPS_PORT || 443
-const public_dir = process.env.PUBLIC_DIR || 'public'
+const public_dir = process.env.PUBLIC_PATH || 'public'
 
 const keyFile = 'self-signed.key'
 const certFile = 'self-' + 'signed.crt'
