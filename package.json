@@ -9,7 +9,7 @@
     "express": "^4.17.3",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
-    "ws": "^8.5.0"
+    "ws": "^8.8.0"
   },
   "scripts": {
     "test": "nodemon server.js"
